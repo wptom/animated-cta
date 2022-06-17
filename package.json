@@ -4,7 +4,15 @@
   "description": "Animated call-to-action block.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run watch-css & npm run watch-files & npm run watch-ejs & nodemon index.js",
+    "reload": "reload -w src/ -d public/ -e html,scss,css,js,ejs -p 3000",
+    "watch": "nodemon --ext * & npm run reload",
+    "watch-css": "nodemon -e scss -x \"npm run build-css\"",
+    "build-css": "sass src/scss/main.scss:public/css/main.css --style expanded",
+    "build-html-index": "ejs views/index.ejs -o public/index.html",
+    "build-html": "npm run build-html-index & npm run reload",
+    "watch-ejs": "nodemon -e ejs -x \"npm run build-html\"",
+    "watch-files": "copy-and-watch src/**/js/* src/**/js/modules/* src/**/images/* public/ --watch"
   },
   "repository": {
     "type": "git",
@@ -17,10 +25,18 @@
     "javascript",
     "animation"
   ],
-  "author": "WPTom",
+  "author": "wptom.com <tom@wptom.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/wptom/animated-cta/issues"
   },
-  "homepage": "https://github.com/wptom/animated-cta#readme"
+  "homepage": "https://github.com/wptom/animated-cta#readme",
+  "devDependencies": {
+    "copy-and-watch": "^0.1.6",
+    "css-cols": "^1.0.2",
+    "ejs": "^3.1.8",
+    "nodemon": "^2.0.16",
+    "reload": "^3.2.0",
+    "sass": "^1.52.3"
+  }
 }
