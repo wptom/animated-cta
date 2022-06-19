@@ -33,7 +33,7 @@
   "homepage": "https://github.com/wptom/animated-cta#readme",
   "devDependencies": {
     "copy-and-watch": "^0.1.6",
-    "css-cols": "^1.0.2",
+    "css-cols": "^1.0.3",
     "ejs": "^3.1.8",
     "nodemon": "^2.0.16",
     "reload": "^3.2.0",
